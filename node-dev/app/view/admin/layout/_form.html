@@ -1,0 +1,29 @@
+<div class="card">
+		<div class="card-body">
+        {% if form %}
+            
+			<form action="{{form.action}}" method="POST">
+				
+                {% for item in form.fields %}
+
+                     <div class="form-group row">
+					<label class="col-form-label col-md-2">{{item.label}}</label>
+					<div class="col-md-10">
+						<input name = "{{item.name}}" type="{{item.type}}" class="form-control" placeholder="{{item.placeholder}}...">
+					</div>
+				</div>
+
+                {% endfor %}
+                
+               
+
+
+
+				<div class="text-right mt-3">
+					<button type="submit" class="btn btn-primary">提 交</button>
+				</div>
+			</form>
+{% endif %}
+
+		</div>
+	</div>

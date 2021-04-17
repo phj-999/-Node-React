@@ -8,7 +8,30 @@ class ManagerController extends Controller {
         const { ctx, app } = this;
 
         //模板渲染
-        await ctx.render('/admin/manager/create.html')
+        await ctx.renderTemplate({
+            title: '创建管理员',
+            // 模板类型 form表单，table表格分页
+            tempType: 'form',
+            // 表单配置
+            form: {
+                // 提交地址
+                action: '/admin/manager',
+                // 字段配置
+                fields: [{
+                    label: "用户名",
+                    type: "text",
+                    name: "username",
+                    placeholder: "用户名",
+                }, {
+                    label: "密码",
+                    type: "text",
+                    name: "password",
+                    placeholder: "密码"
+        }],
+            },
+            // 新增成功跳转路径
+            
+        })
 
     }
     //创建管理员的逻辑
@@ -51,12 +74,44 @@ class ManagerController extends Controller {
         //拿到相应的数据 (此处已经创建好了用户，所以要从数据库中拿到数据)
         //传入limit offset参数实现分页
         //let list = await app.model.Manager.findAndCountAll({offset,limit})
+        await ctx.renderTemplate({
+            title:"管理员列表",
+            tempType: "table",
+            table:{
+                // 按钮
+                buttons: {
+                    // 新增操作
+                    add: "/admin/manager/create"
+                },
+                // 表头
+                columns:[{
+                    title:"管理员",
+                    fixed: 'left',
+                    key:"username"
+                },{
+                    title:"创建时间",
+                    fixed: 'center',
+                    width: 180,
+                    key:"created_time"
+                },{
+                    title: "操作",
+                    width: 200,
+                    fixed: 'center',
+                    action:{
+                        edit:function(id){
+                            return `/admin/manager/edit/${id}`
+                        },
+                        delete:function(id){
+                            return `/admin/manager/delete/${id}`
+                        },
+                    }
+        }]
+            },
+            list
+        })
         //渲染模板
-        await ctx.render('admin/manager/index.html',{list})
+
     }
-    
-
-
 
 
 

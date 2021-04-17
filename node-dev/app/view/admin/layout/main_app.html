@@ -46,10 +46,10 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">创建管理员</h3>
+								<h3 class="page-title">{{title}}</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">后台首页</a></li>
-									<li class="breadcrumb-item active">创建管理员</li>
+									<li class="breadcrumb-item"><a href="/admin">后台首页</a></li>
+									<li class="breadcrumb-item active">{{title}}</li>
 								</ul>
 							</div>
 						</div>
@@ -60,6 +60,16 @@
 
 							{% block main %}
                                 
+								{% if tempType === 'table' %}
+
+								{% include "admin/layout/_table.html" %}
+								
+								{% else %}	
+								
+								{% include "admin/layout/_form.html" %}
+								
+								{% endif %}
+
                             {% endblock %} 
 
 						</div>

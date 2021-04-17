@@ -62,7 +62,7 @@ query = urlEncode(query)
 //定义一个空变量存总页数
 let pageEl = ''
 //循环页码
-for (let index = 1; index < totalPage; index++) {
+for (let index = 1; index <= totalPage; index++) {
   //定义一个选中的当前页面
   let active = ''
   if (page === index) {
@@ -103,5 +103,9 @@ this.locals.pageRender = pageRender
     return res.rows
   },
  
+  //渲染公共模板
+async renderTemplate(params = {} ){
+  await this.render('admin/commonTemplate/template.html',params)  
+}
 }
 
