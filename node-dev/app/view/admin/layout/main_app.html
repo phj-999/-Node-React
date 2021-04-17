@@ -19,17 +19,27 @@
 
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="/public/assets/css/style.css">
+     {# 提示是全局的，所以在此文件中做   要用到vue #}
 
 		<!--[if lt IE 9]>
 			<script src="/public/assets/js/html5shiv.min.js"></script>
 			<script src="/public/assets/js/respond.min.js"></script>
 		<![endif]-->
+			 <script src="/public/assets/js/vue.min.js"></script>
+	 <script src="/public/assets/js/vue.component.js"></script>
+	 <script>
+			var Vueapp = new Vue({
+				el:"#vueapp"
+			})
+		</script>
 	</head>
 	<body>
 
 		<!-- Main Wrapper -->
-		<div class="main-wrapper">
+		<div class="main-wrapper" id="vueapp">
 
+		<toast ref="toast"></toast>
+		<confirm ref="confirm"></confirm>
 			<!-- Header -->
 		{% include "admin/layout/_header.html" %}
 			<!-- /Header -->
@@ -93,5 +103,19 @@
 
 		<!-- Custom JS -->
 		<script src="/public/assets/js/script.js"></script>
+	
+	
+{% block js %}{% endblock %}
+
+<script>
+			var toast = "{{ toast.msg }}"
+			if(toast && Vueapp && Vueapp.$refs.toast){
+				Vueapp.$refs.toast.show({
+					msg:"{{ toast.msg }}",
+					type:"{{ toast.type }}"
+				})
+			}
+		
+		</script>
 	</body>
 </html>

@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { 
   // 成功提示
   apiSuccess(data = '', msg = 'ok', code = 200) {
     this.body = { msg, data };
@@ -103,9 +103,38 @@ this.locals.pageRender = pageRender
     return res.rows
   },
  
-  //渲染公共模板
+// 渲染公共模板
 async renderTemplate(params = {} ){
-  await this.render('admin/commonTemplate/template.html',params)  
-}
-}
 
+ // 获取cookie中的消息提示（闪存）
+ let toast = this.cookies.get('toast',{
+  // 中文需要解密
+  encrypt: true
+});
+// 赋值给params
+params.toast = toast ? JSON.parse(toast) : null
+// 渲染公共模板
+//return await this.render('admin/common/template.html', params)
+
+  await this.render('admin/commonTemplate/template.html',params)  
+},
+
+  // 消息提示 存在cookie中 msg提示内容
+  toast(msg, type = 'danger') {
+    this.cookies.set('toast', JSON.stringify({
+      msg, type
+    }), {
+      maxAge: 1500, // 有效时间
+      encrypt: true // 加密 官方文档中提示egg使用cookie配置
+    })
+  }
+
+
+
+
+
+
+
+
+
+}

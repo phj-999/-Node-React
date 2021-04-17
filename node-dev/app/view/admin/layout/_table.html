@@ -26,20 +26,22 @@
                                 <tr>
 
                                     {% for item2 in table.columns %}
-                                        <td  class="text-{{item2.fixed}}">
-                                            {% if item2.key %}
-                                                {{ item[item2.key] }}
+                             <td  class="text-{{item2.fixed}}">
+                                 {% if item2.key %}
+                                     {{ item[item2.key] }}
 
-                                            {% else %}
-                                                <div class="actions">
-                                                    {% if item2.action.edit %}
-                                                        <a href="{{ item2.action.edit(item.id) }}" class="btn btn-sm bg-success-light mr-2">
-                                                            <i class="fe fe-pencil"></i> 修改
-                                                        </a>
-                                                    {% endif %}
-                                                    {% if item2.action.delete %}
-                                                        <a href="{{ item2.action.delete(item.id) }}" class="btn btn-sm bg-danger-light">
-                                                            <i class="fe fe-trash"></i> 删除
+                                 {% else %}
+                                     <div class="actions">
+                                         {% if item2.action.edit %}
+                                             <a href="{{ item2.action.edit(item.id) }}" class="btn btn-sm bg-success-light mr-2">
+                                                 <i class="fe fe-pencil"></i> 修改
+                                             </a>
+
+                                         {% endif %}
+                                         {% if item2.action.delete %}
+                                             <a class="btn btn-sm bg-danger-light" 
+                                             @click="del(`{{ item2.action.delete(item.id) }}`)">
+                                                 <i class="fe fe-trash"></i> 删除
                                                         </a>
                                                     {% endif %}
                                                 </div>
@@ -60,3 +62,22 @@
             {{ ctx.locals.pageRender | safe }}
         </div>
     </div>
+
+ <script>
+     	 Vueapp = new Vue({
+				el:"#vueapp",
+                methods:{
+                    del(url){
+             this.$refs.confirm.show({
+				title:"提示",
+                    content:"是否要删除该记录",
+                    success:function(){
+                        window.location.href=url //关键步骤
+                        console.log('删除成功')
+                    }
+			    })
+            }
+        }
+	})
+
+</script>		
