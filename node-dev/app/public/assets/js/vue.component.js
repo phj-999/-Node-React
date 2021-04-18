@@ -29,6 +29,9 @@ Vue.component('toast', {
             this.timer = setTimeout(() => {
                 this.hide()
                 this.timer = null
+                if(options.success && typeof options.success === 'function'){
+                    options.success()
+                }
             }, options.delay || 1500);
         },
         hide:function(){

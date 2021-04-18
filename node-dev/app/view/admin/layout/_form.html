@@ -9,21 +9,59 @@
                      <div class="form-group row">
 					<label class="col-form-label col-md-2">{{item.label}}</label>
 					<div class="col-md-10">
-						<input name = "{{item.name}}" type="{{item.type}}" class="form-control" placeholder="{{item.placeholder}}...">
+						<input name = "{{item.name}}" type="{{item.type}}" class="form-control" 
+						placeholder="{{item.placeholder}}..." v-model="form.{{item.name}}">
 					</div>
 				</div>
 
                 {% endfor %}
                 
-               
-
-
 
 				<div class="text-right mt-3">
-					<button type="submit" class="btn btn-primary">提 交</button>
+					<button type="submit" class="btn btn-primary" @click.stop.prevent="submit">提 交</button>
 				</div>
 			</form>
 {% endif %}
 
 		</div>
 	</div>
+
+<script>
+    Vueapp = new Vue({
+        el:"#vueapp",
+        data() {
+            return {
+    form:{
+        {% for item in form.fields %}
+        {{ item.name }}:"{{ form.data[item.name] if form.data[item.name] else item.default }}",
+        {% endfor %}
+    }
+            }
+        },
+        methods: {
+            submit(){
+                $.ajax({
+                    type:"POST",
+                    url:"{{ form.action }}?_csrf={{ctx.csrf|safe}}",
+                    contentType:"application/json;chatset=UTF-8",
+                    data:JSON.stringify(this.form),
+                    success:function(result){
+                        Vueapp.$refs.toast.show({
+                            msg:"{{ '修改' if id else '新增' }}成功",
+                            type:"success",
+                            success:function(){
+                                window.location.href = "{{ successUrl }}"
+                            }
+                        })
+                    },
+                    error:function(e){
+                        Vueapp.$refs.toast.show({
+                            msg:e.responseJSON.data,
+                            type:"danger"
+                        })
+                    }
+                })
+            }
+        },
+    })
+</script>

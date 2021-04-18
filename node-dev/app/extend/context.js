@@ -9,6 +9,14 @@ module.exports = {
     this.body = { msg, data };
     this.status = code;
   },
+  
+// 编辑管理员 页面失败提示 data错误提示
+async pageFail(data = '',code= 404){
+  //渲染404页面
+  return await this.render('admin/commonTemplate/404.html', {
+    data, code
+  })
+},
 
 
   //拓展分页的方法
@@ -127,8 +135,7 @@ params.toast = toast ? JSON.parse(toast) : null
       maxAge: 1500, // 有效时间
       encrypt: true // 加密 官方文档中提示egg使用cookie配置
     })
-  }
-
+  },
 
 
 
