@@ -16,5 +16,11 @@ module.exports = app => {
   //404
   router.get('/admin/manager/edit/:id',controller.admin.manager.edit);
   //修改管理员之更新逻辑
-  router.post('/admin/manager/:id',controller.admin.manager.update)
+  router.post('/admin/manager/:id',controller.admin.manager.update);
+  //登录页面
+  router.get('/admin/login',controller.admin.home.login);
+  //登录逻辑（存储、验证） 
+  router.post('/admin/loginevent',controller.admin.home.loginevent);
+  //退出登录
+  router.get('/admin/logout',controller.admin.home.logout)
 };

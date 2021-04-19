@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1618542164435_1352';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = ['errorHandler','adminAuth'];
 
   // add your user config here
   const userConfig = {
@@ -41,8 +41,7 @@ module.exports = appInfo => {
     origin: '*',
     allowMethods: 'GET, PUT, POST, DELETE, PATCH'
   };
-  //异常处理的中间件
-  config.middleware = ['errorHandler'];
+ 
 
   config.sequelize = {
     dialect: 'mysql',
@@ -83,6 +82,26 @@ config.valparams = {
 config.crypto = {
   secret:  'qhdgw@45ncashdaksh2!#@3nxjdas*_672'
 };
+config.session =  {
+  // 在有些场景下，我们希望用户如果长时间都在访问我们的站点，则延长他们的 Session 有效期，不让用户退出登录态
+  renew: true,
+  // key 代表了存储 Session 的 Cookie 键值对的 key 是什么
+  key: 'EGG_SESS',
+  // 最长保存时间（毫秒）
+  maxAge: 24 * 3600 * 1000 * 30, // 30 天
+  // 设置键值对是否可以被 js 访问，默认为 true，不允许被 js 访问。
+  httpOnly: true,
+  // 加密
+  encrypt: true
+};
+//中间件adminAuth不验证的地址
+config.adminAuth = {
+  ignore: [
+    '/api',
+
+   '/admin'  //'/admin/login', '/admin/loginevent'
+  ]
+}
   return {
     ...config,
     ...userConfig,
