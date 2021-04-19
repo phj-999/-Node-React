@@ -5,6 +5,8 @@
  */
 module.exports = app => {
   const { router, controller } = app;
+  //后台首页
+  router.get('/admin',controller.admin.home.index)
   // 创建管理员的页面
   router.get('/admin/manager/create', controller.admin.manager.create);
   // 创建
@@ -35,4 +37,14 @@ module.exports = app => {
   router.post('/admin/user/:id',controller.admin.user.update);
   //删除用户
   router.get('/admin/user/delete/:id', controller.admin.user.delete);
+  //创建礼物
+  router.get('/admin/gift/create', controller.admin.gift.create);
+  //创建的post逻辑
+  router.post('/admin/gift', controller.admin.gift.save);
+//上传文件
+  router.post('/admin/upload', controller.admin.common.upload);
+
+
+
+
 };

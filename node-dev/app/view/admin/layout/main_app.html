@@ -52,8 +52,8 @@
 			<!-- Page Wrapper -->
 			<div class="page-wrapper">
 				<div class="content container-fluid">
-
-					<div class="page-header">
+{% if title %}
+	<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
 								<h3 class="page-title">{{title}}</h3>
@@ -64,6 +64,8 @@
 							</div>
 						</div>
 					</div>
+{% endif %}
+					
 
 					<div class="row">
 						<div class="col-sm-12">

@@ -9,8 +9,14 @@
                      <div class="form-group row">
 					<label class="col-form-label col-md-2">{{item.label}}</label>
 					<div class="col-md-10">
-						<input name = "{{item.name}}" type="{{item.type}}" class="form-control" 
-						placeholder="{{item.placeholder}}..." v-model="form.{{item.name}}">
+
+ {% if item.type === 'file' %}
+                    <input name="{{item.name}}" type="file" class="form-control" @change="fileUpload($event,'{{ item.name }}')">
+                    <img :src="form.{{item.name}}" v-if="form.{{item.name}}" class="avatar-lg border rounded p-1 mt-2">
+                    {% else %}
+                    <input name="{{item.name}}" type="{{item.type}}" class="form-control" placeholder="{{item.placeholder}}..." v-model="form.{{item.name}}">
+                    {% endif %}
+
 					</div>
 				</div>
 
@@ -39,6 +45,32 @@
             }
         },
         methods: {
+       fileUpload(event,name){
+                var _t = this
+                let file = event.target.files
+                let formData = new FormData()
+                formData.append('file',file[0])
+                $.ajax({
+                    type:"POST",
+                    url:"/admin/upload?_csrf={{ctx.csrf|safe}}",
+                    contentType:false,
+                    processData:false,
+                    data:formData,
+                    success:function(result){
+                        _t.form[name] = result.data.url
+                        Vueapp.$refs.toast.show({
+                            msg:"上传成功",
+                            type:"success"
+                        })
+                    },
+                    error:function(e){
+                        Vueapp.$refs.toast.show({
+                            msg:e.responseJSON.data,
+                            type:"danger"
+                        })
+                    }
+                })
+            },
             submit(){
                 $.ajax({
                     type:"POST",

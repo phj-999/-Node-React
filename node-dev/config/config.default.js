@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1618542164435_1352';
 
   // add your middleware config here
-  config.middleware = ['errorHandler','adminAuth'];
+  config.middleware = ['errorHandler','adminAuth','adminSidebar'];
 
   // add your user config here
   const userConfig = {
@@ -102,6 +102,23 @@ config.adminAuth = {
    '/admin'  //'/admin/login', '/admin/loginevent'
   ]
 }
+//过滤不经过adminslider中间件的
+config.adminSidebar = {
+  ignore: [
+    '/api',
+    '/admin/login',
+    '/admin/loginevent',
+    '/public'
+  ]
+}
+//上传文件
+config.multipart = {
+  fileSize: '50mb',
+  mode: 'stream',
+  fileExtensions: ['.jpg', '.JPG', '.png', '.PNG', '.gif', '.GIF', '.jpeg', '.JPEG'], // 扩展几种上传的文件格式
+};
+
+
   return {
     ...config,
     ...userConfig,
