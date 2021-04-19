@@ -27,9 +27,14 @@
 
                                     {% for item2 in table.columns %}
                              <td  class="text-{{item2.fixed}}">
+
+
+
+
                                  {% if item2.key %}
                                      {{ item[item2.key] }}
-
+{% elif item2.render %}
+{{ item2.render(item) | safe }}
                                  {% else %}
                                      <div class="actions">
                                          {% if item2.action.edit %}

@@ -39,8 +39,8 @@ class ManagerController extends Controller {
         const { ctx, app } = this
         //参数验证
         ctx.validate({
-            username: { type: 'string', required: "true", desx: "管理员账户" },
-            password: { type: 'string', required: "true", desx: "密码" },
+            username: { type: 'string', required: "true", desc: "管理员账户" },
+            password: { type: 'string', required: "true", desc: "密码" },
         })
         let { username, password } = ctx.request.body
         //判断用户名有没有
