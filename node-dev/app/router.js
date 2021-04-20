@@ -53,6 +53,10 @@ module.exports = app => {
   router.get('/admin/gift/delete/:id', controller.admin.gift.delete);
 //上传文件
   router.post('/admin/upload', controller.admin.common.upload);
+  //订单列表
+  router.get('/admin/order', controller.admin.order.index);
+  //删除订单
+  router.get('/admin/order/delete/:id', controller.admin.order.delete);
 
 
 
