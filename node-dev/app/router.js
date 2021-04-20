@@ -37,10 +37,20 @@ module.exports = app => {
   router.post('/admin/user/:id',controller.admin.user.update);
   //删除用户
   router.get('/admin/user/delete/:id', controller.admin.user.delete);
+
+
   //创建礼物
   router.get('/admin/gift/create', controller.admin.gift.create);
   //创建的post逻辑
   router.post('/admin/gift', controller.admin.gift.save);
+  //礼物列表
+  router.get('/admin/gift', controller.admin.gift.index);
+  //修改礼物
+  router.get('/admin/gift/edit/:id',controller.admin.gift.edit);
+  //修改礼物更新逻辑
+  router.post('/admin/gift/:id',controller.admin.gift.update);
+  //删除礼物
+  router.get('/admin/gift/delete/:id', controller.admin.gift.delete);
 //上传文件
   router.post('/admin/upload', controller.admin.common.upload);
 
