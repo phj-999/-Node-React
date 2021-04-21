@@ -8,14 +8,14 @@ class OrderController extends Controller {
             ctx,
             app
         } = this
-        let data = await ctx.page('Order', {}, {
+        let list = await ctx.page('Order', {}, {
             //关联
             include: [{
                 model: app.model.User,
                 attributes: ['id', 'username', 'avatar']
             }]
         })
-        data = JSON.parse(JSON.stringify(data))
+        list = JSON.parse(JSON.stringify(list))
 
         await ctx.renderTemplate({
             title: "订单列表",
@@ -85,7 +85,7 @@ class OrderController extends Controller {
                     }
                 }]
             },
-            data
+            list
         })
     }
     //删除管理员

@@ -57,7 +57,18 @@ module.exports = app => {
   router.get('/admin/order', controller.admin.order.index);
   //删除订单
   router.get('/admin/order/delete/:id', controller.admin.order.delete);
-
+  //直播间列表
+  router.get('/admin/live', controller.admin.live.index);
+  //直播间观看记录
+  router.get('/admin/live/look/:id', controller.admin.live.look);
+  //直播间礼物记录
+  router.get('/admin/live/gift/:id', controller.admin.live.gift);
+  //直播间评论（弹幕）
+  router.get('/admin/live/comment/:id', controller.admin.live.comment);
+  //关闭直播间
+  router.get('/admin/live/close/:id', controller.admin.live.close);
+  //删除直播间
+  router.get('admin/live/delete/:id',controller.admin.live.delete)
 
 
 
