@@ -16,7 +16,7 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1618542164435_1352';
 
   // add your middleware config here
-  config.middleware = ['errorHandler','adminAuth','adminSidebar'];
+  config.middleware = ['errorHandler','adminAuth','adminSidebar','auth'];
 
   // add your user config here
   const userConfig = {
@@ -117,7 +117,29 @@ config.multipart = {
   mode: 'stream',
   fileExtensions: ['.jpg', '.JPG', '.png', '.PNG', '.gif', '.GIF', '.jpeg', '.JPEG'], // 扩展几种上传的文件格式
 };
-
+//API--用户登录jwt 加密鉴权 
+config.jwt = {
+  secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672'
+};
+//redis 缓存插件
+config.redis = {
+  client: {
+      port: 6379,          // Redis port
+      host: '127.0.0.1',   // Redis host
+      password: '',
+      db: 2,
+  },
+}
+//权限验证中间件
+config.auth = {
+  match: [
+    '/api/logout',
+    '/api/live/create',
+    '/api/live/changestatus',
+    '/api/gift/wxpay',
+    '/api/user/info',
+  ]
+};
 
   return {
     ...config,

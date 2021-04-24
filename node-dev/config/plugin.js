@@ -26,5 +26,16 @@ module.exports = {
     enable : true,
     package: 'egg-valparams'
   },
+  //登录- jwt 加密鉴权 
+jwt : {
+    enable: true,
+    package: "egg-jwt"
+  },
+  //redis 缓存插件
+  redis : {
+    enable: true,
+    package: 'egg-redis',
+  },
+
   
 };

@@ -69,7 +69,12 @@ module.exports = app => {
   router.get('/admin/live/close/:id', controller.admin.live.close);
   //删除直播间
   router.get('admin/live/delete/:id',controller.admin.live.delete)
-
-
-
+  //api--注册
+  router.post('/api/reg', controller.api.user.reg);
+  //api-登录
+  router.post('/api/login', controller.api.user.login);
+//api-退出登录
+router.post('/api/logout', controller.api.user.logout);
+//获取当前用户信息
+router.get('/api/user/info', controller.api.user.info);
 };
