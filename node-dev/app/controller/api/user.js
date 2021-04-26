@@ -118,7 +118,7 @@ ctx.apiSuccess('退出登录')
 
 //获取当前用户信息
 async info(){
-    const { ctx, service, app } = this;
+    const { ctx } = this;
     let user = ctx.authUser
     return ctx.apiSuccess(JSON.parse(JSON.stringify(user)))
 }

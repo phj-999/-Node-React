@@ -139,6 +139,25 @@ config.auth = {
     '/api/gift/wxpay',
     '/api/user/info',
   ]
+},
+// 流媒体配置
+config.mediaServer = {
+  rtmp: {
+    port: 23480,
+    chunk_size: 60000,
+    gop_cache: true,
+    ping: 30,
+    ping_timeout: 60
+  },
+  http: {
+    port: 23481,
+    allow_origin: '*'
+  },
+  auth: {
+    play: true,
+    publish: true,
+    secret: 'nodemedia2017privatekey',//随便写的加秘字符串
+  },
 };
 
   return {

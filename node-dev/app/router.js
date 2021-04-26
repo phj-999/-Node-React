@@ -77,4 +77,12 @@ module.exports = app => {
 router.post('/api/logout', controller.api.user.logout);
 //获取当前用户信息
 router.get('/api/user/info', controller.api.user.info);
+//创建直播间
+router.post('/api/live/create',controller.api.live.save);
+//修该直播间状态
+router.post('/api/live/changestatus', controller.api.live.changestatus);
+//直播间列表
+router.get('/api/live/list/:page', controller.api.live.list);
+// 查看直播间
+router.get('/api/live/read/:id', controller.api.live.read);
 };
