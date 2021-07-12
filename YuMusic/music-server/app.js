@@ -5,19 +5,18 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const { resolve } = require("path")
 
-
-const index = require('./routes/index')
-const users = require('./routes/users')
-const koaCors = require('./middlewares/koa-cors')
-const MongoConnect = require('./config/mongo')
-const { access } = require('./utils/log')
+const koaCors = require('./middlewares/koa-cors')//跨域
+//const MongoConnect = require('./config/mongo')//数据库
+const { access } = require('./utils/log')//日志
+const A = require("./middlewares/aurouter")
 
 // error handler
 onerror(app)
 
 //mongoose
-MongoConnect()
+//MongoConnect()
 
 // middlewares
 app.use(bodyparser({
@@ -53,13 +52,16 @@ app.use(koaCors({
 }))
 
 // routes
-app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+// app.use(index.routes(), index.allowedMethods())
+// app.use(users.routes(), users.allowedMethods())
 
-// error-handling
-app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx)
-});
+A.useRouters(resolve(__dirname, "./routers"))
+
+ //error-handling
+ app.on('error', (err, ctx) => {
+   console.error('server error', err, ctx,)
+ });
+
 
 
 

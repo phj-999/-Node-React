@@ -1,1 +1,33 @@
 GET -- / --484ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625849401941
+GET -- / --3ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625994838854
+GET -- /favicon.ico --0ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625994839720
+GET -- / --1ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625994860790
+GET -- / --1ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625996970541
+GET -- /user --2ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625997117333
+GET -- /user --0ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625997120234
+GET -- /user --0ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625997121196
+GET -- /user --2ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625997625539
+GET -- / --1ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1625997633342
+GET -- /user --2ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1626007508026
+GET -- /user --1ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1626007509400
+GET -- /api/users --0ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1626007537157
+GET -- /api/users --2ms -- Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36 -- 1626007661886
+POST -- /api/users --1ms -- PostmanRuntime/7.26.10 -- 1626009620445
+POST -- /api/users --0ms -- PostmanRuntime/7.26.10 -- 1626009680873
+GET -- /api/users --0ms -- PostmanRuntime/7.26.10 -- 1626009871626
+GET -- /api/users --0ms -- PostmanRuntime/7.26.10 -- 1626013573159
+POST -- /api/users --1ms -- PostmanRuntime/7.26.10 -- 1626016299096
+POST -- /api/users --1ms -- PostmanRuntime/7.26.10 -- 1626016371461
+POST -- /api/users --1ms -- PostmanRuntime/7.26.10 -- 1626016839186
+POST -- /api/users --0ms -- PostmanRuntime/7.26.10 -- 1626016840077
+POST -- /api/users --0ms -- PostmanRuntime/7.26.10 -- 1626016840672
+POST -- /api/users --0ms -- PostmanRuntime/7.26.10 -- 1626016841252
+POST -- /api/users --0ms -- PostmanRuntime/7.26.10 -- 1626016853660
+POST -- /api/users --2ms -- PostmanRuntime/7.26.10 -- 1626017014995
+POST -- /api/users --1ms -- PostmanRuntime/7.26.10 -- 1626017511532
+POST -- /api/users --2ms -- PostmanRuntime/7.26.10 -- 1626020880414
+POST -- /api/users --2ms -- PostmanRuntime/7.26.10 -- 1626021296744
+POST -- /api/users --0ms -- PostmanRuntime/7.26.10 -- 1626021307863
+POST -- /api/users --2ms -- PostmanRuntime/7.26.10 -- 1626021821322
+POST -- /api/users --1ms -- PostmanRuntime/7.26.10 -- 1626021857064
+POST -- /api/users --2ms -- PostmanRuntime/7.26.10 -- 1626021986557
