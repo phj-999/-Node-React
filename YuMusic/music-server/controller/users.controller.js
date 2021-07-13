@@ -17,16 +17,24 @@ const DB = require('../mongodb/db')
 
 //注册用户
 
-const addUser = async ctx => {
+   const addUser = async ctx => {
     
-    const {username,password,age,sex} = ctx.request.body
+    const {username,password,age,sex,telephone,email} = ctx.request.body
 
-    await DB.insert('users',{username,password,age,sex})
+    let create_data = 
+
+    await DB.insert('users',{username,password,age,sex,telephone,email})
 
     let feedback
     
     try {
-        feedback = {code:200,msg:'添加成功'}
+       feedback={
+           code:200,
+           msg:'注册成功',
+           data:{
+            username
+           }
+       }
     } catch (error) {
         console.log(error);
         feedback = {code:500,msg:'server error'}
@@ -34,10 +42,9 @@ const addUser = async ctx => {
     
     ctx.body = feedback
 
-    client.close()
 }
 
+const users = {addUser}
 
-
-module.exports = new UsersController()
+module.exports = {users}
 

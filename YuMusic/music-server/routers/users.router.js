@@ -1,11 +1,12 @@
+const Router = require('koa-router')
+const userRouter = new Router()
+const {users} = require('../controller/users.controller')
 
-const controller = require('../controller/users.controller')
+const {
+    handlePassword
+} = require ('../middlewares/users.middleware')
 
-// const {
-//     verifyusers, 
-// } = require ('../middlewares/users.middleware.js')
+userRouter.post('/api/users', handlePassword, users.addUser)
 
 
-module.exports = router => {
-router.post('/api/users', controller.create)
-}
+module.exports = userRouter

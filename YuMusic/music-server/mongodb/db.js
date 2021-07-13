@@ -11,6 +11,7 @@ class DB {
         if (!DB.instance) {
             console.log('The First Single Sample Mode Walking Route')
             DB.instance = new DB()
+            return DB.instance
         }
     }
 
@@ -43,7 +44,22 @@ class DB {
     } 
     
 
-    
+    // 新增
+  insert(collectionName,data){
+    return new Promise((resolve,reject)=>{
+      this.connect().then(db=>{
+        db.collection(collectionName).insertOne(data,(error,result)=>{
+          if(!error){
+            console.log('增加数据成功');
+            resolve(result)
+          }else{
+            console.log(error,'增加数据失败');
+            reject(error)
+          }
+        })
+      })
+    })
+  }
     
 
     getObjectID(id){
