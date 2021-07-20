@@ -1,4 +1,8 @@
+const jwt = require('jsonwebtoken')
 
+const 
+   { PRIVATE_KEY}
+ = require ('../../config/key')
 /**
  * 用户登录的controller
  * @classdesc AuthController
@@ -11,7 +15,12 @@ class AuthController {
      */
     async login(ctx,next){
         //
-        const {username} = ctx.request.body
+        const {_id,username} = ctx.user
+
+        const token = jwt.sign({_id,username},PRIVATE_KEY,{
+            expiresIn:60*60*24,
+            algorithm:'RS256'
+        })
        
         let feedback
 
@@ -19,6 +28,7 @@ class AuthController {
             feedback = {
                 code: 200,
                 msg: '登录成功',
+                token,
                 data: `登录成功，欢迎${username}`
                 
             }
@@ -31,6 +41,10 @@ class AuthController {
         }
 
         ctx.body = feedback
+    }
+
+    async auth(ctx,next){
+        ctx.body = '已授权'
     }
 }
 module.exports = new AuthController()
