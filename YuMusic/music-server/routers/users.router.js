@@ -13,7 +13,9 @@ const {
     handlePassword
 } = require ('../middlewares/users.middleware')
 
-userRouter.post('/api/users', verifyusers, handlePassword, UsersController.addUser)
+const {handleVerifycationCode}=require('../middlewares/verifycationCode.middleware')
+
+userRouter.post('/api/users', verifyusers, handleVerifycationCode, handlePassword, UsersController.addUser)
 
 
 module.exports = userRouter

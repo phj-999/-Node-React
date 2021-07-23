@@ -6,6 +6,7 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const cors = require('koa2-cors')//跨域
+const Session = require('koa-session');
 
 //const MongoConnect = require('./config/mongo')//数据库
 const { access } = require('./utils/log')//日志
@@ -14,14 +15,22 @@ const useRoutes = require('./routers/index')
 // error handler
 onerror(app)
 
-//mongoose
-//MongoConnect()
-
 // middlewares
+app.keys = ['some secret hurr']
+const session = Session({
+  key: 'koa:sess',
+  maxAge: 5*60*1000,
+  //httpOnly: true, 
+  signed: true   //签名是为了防止客户端伪造，默认值true  可设置为true
+},app)
+app.use(session)
+
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
 }))
+
 app.use(json())
+
 app.use(logger())
 //处理静态目录
 app.use(require('koa-static')(__dirname + '/public'))
@@ -44,7 +53,6 @@ app.use(async (ctx, next) => {
 app.use(cors());
 
 // routes
-
 useRoutes(app)
 
  //error-handling

@@ -5,5 +5,5 @@ const dbconfig = {
 }
 
 
-module.exports =dbconfig
+module.exports = dbconfig
 
