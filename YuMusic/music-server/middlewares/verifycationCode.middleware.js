@@ -9,6 +9,7 @@ const handleVerifycationCode = async(ctx,next) => {
 
     let code  =  ctx.session.verifycationCode 
     let ccode =  ctx.request.body.verifycationCode
+    
     console.log('session',code);
     console.log('ctx.request.body.verifycationCode',ccode);
     

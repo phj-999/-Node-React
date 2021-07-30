@@ -35,14 +35,19 @@ class SendemailController {
     try {
       await transporter.sendMail(mailOptions, (error) => {
 
-        // console.log(ctx.request.body.email,mailOptions.text);
+         //console.log(ctx.request.body.email,mailOptions.text);
 
-        if (error) {
-          throw Error("Error");
-        }
+         if (error) {
+          console.log(error);
+          return;
+      }
+      console.log('Message sent');
+      transporter.close();
+          
+        // }
       });
 
-      //console.log(Email.VerifycationCode);
+      console.log(Email.VerifycationCode);
       // 把验证码存储到session中
       ctx.session.verifycationCode = Email.VerifycationCode
       // 存储过期时间5分钟

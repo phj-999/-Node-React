@@ -3,11 +3,11 @@ const app = new Koa()
 const views = require('koa-views')
 const json = require('koa-json')
 const onerror = require('koa-onerror')
-const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const cors = require('koa2-cors')//跨域
 const Session = require('koa-session');
-
+const koaBody = require('koa-body')
+const path = require('path');
 //const MongoConnect = require('./config/mongo')//数据库
 const { access } = require('./utils/log')//日志
 const useRoutes = require('./routers/index')
@@ -16,6 +16,33 @@ const useRoutes = require('./routers/index')
 onerror(app)
 
 // middlewares
+
+// app.use(bodyparser({
+//   enableTypes:['json', 'form', 'text','raw']
+// }))
+// koa-body 文件上传 及json、form、text、raw等格式解析
+app.use(koaBody({
+  multipart: true,
+  encoding:'utf-8',
+  formidable:{
+   // uploadDir: path.join(__dirname,'/public/image'),
+    //keepExtensions: true, // 保持文件后缀
+    maxFieldsSize:2*1024*1024, // 文件上传大小
+    multipart:true,
+    onFileBegin:(name,file)=>{
+       console.log(file);
+     }
+    },
+    
+  
+}))
+
+app.use(json())
+
+app.use(logger())
+
+// session
+
 app.keys = ['some secret hurr']
 const session = Session({
   key: 'koa:sess',
@@ -25,13 +52,6 @@ const session = Session({
 },app)
 app.use(session)
 
-app.use(bodyparser({
-  enableTypes:['json', 'form', 'text']
-}))
-
-app.use(json())
-
-app.use(logger())
 //处理静态目录
 app.use(require('koa-static')(__dirname + '/public'))
 

@@ -13,6 +13,7 @@
     "glob": "^7.1.7",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.7.0",
+    "koa-body": "^4.2.0",
     "koa-bodyparser": "^4.2.1",
     "koa-compose": "^4.1.0",
     "koa-convert": "^1.2.0",
