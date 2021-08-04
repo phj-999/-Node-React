@@ -12,11 +12,11 @@ import HYAlbum from "../pages/discover/c-pages/album";
 import HYFriend from '@/pages/friend'
 import HYMine from '@/pages/mine'
 
-const routes= [
+const routes = [
    {
        path:'/',
        exact:true,
-       render:()=>{
+       render:() => {
            <Redirect to='/discover'/>
        },
    },

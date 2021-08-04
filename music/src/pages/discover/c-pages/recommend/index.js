@@ -1,7 +1,17 @@
 import React, { memo } from 'react';
 
-import HYTopBanner from './c-cpns/top-banner/index'
-import {RecommendWrapper} from './style'
+import HYTopBanner from './c-cpns/top-banner'
+import HYHotRecommend from './c-cpns/hot-recommend/index'
+import HYNewAlbum from './c-cpns/new-album/index'
+import HYRecomendRanking from './c-cpns/recommend-ranking'
+
+import {
+    RecommendWraper,
+    Content,
+    RecommendLeft,
+    RecommendRight
+  } from "./style";
+
 //import { useSelector,shallowEqual,useDispatch } from 'react-redux';
 //import {connect} from 'react-redux'
 //import { getTopBannerAction } from './store/actionCreatiors';
@@ -29,7 +39,7 @@ import {RecommendWrapper} from './style'
 //     }                       //action派发出去了  执行actionCreatiors.js中的代码
 // })
 
-// //做映射
+// //做映射connect (mapStateToProps, mapDispatchToProps)形成高阶组件 在包裹HYRecommend
 // export default connect (mapStateToProps, mapDispatchToProps) (memo(HYRecommend))
 
 /**
@@ -38,22 +48,24 @@ import {RecommendWrapper} from './style'
  * @returns 
  */
 
-function HYRecommend(props) {
-//抽取到c-cpns/top-banners/index.js
 
 
-    return (
-         <div>
-             <RecommendWrapper>
-                 <HYTopBanner/>
-             </RecommendWrapper>
-         </div>
-            )
-}
-
-
+export default memo(function HYRecommend() {
+    //抽取到c-cpns/top-banners/index.js    
+        return (
+    <RecommendWraper>
+      <HYTopBanner/>
+      <Content className="wrap-v2">
+        <RecommendLeft>
+        <HYHotRecommend/>
+        <HYNewAlbum/>
+        <HYRecomendRanking/>
+        </RecommendLeft>
+        <RecommendRight>
+         222
+        </RecommendRight>
+      </Content>
+    </RecommendWraper>
+  )
+})
              
-
-
-//做映射
-export default(memo(HYRecommend))

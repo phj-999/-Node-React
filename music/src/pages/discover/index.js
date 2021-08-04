@@ -1,18 +1,14 @@
-import React, { memo,useEffect  } from 'react';
+import React, { memo } from 'react';
 import { renderRoutes } from 'react-router-config';
+import { NavLink } from 'react-router-dom';
 
 import { dicoverMenu } from "@/common/local-data";
-
-
-
-import { NavLink } from 'react-router-dom';
 import {
   DiscoverWrapper,
   TopMenu
 } from './style';
 
 export default memo(function HYDiscover(props) {
-
 
     const { route } = props
 

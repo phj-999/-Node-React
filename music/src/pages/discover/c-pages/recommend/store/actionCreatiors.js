@@ -1,21 +1,37 @@
-import * as actionTypes from './constants'
+import * as actionTypes from "./constants";
 
-import {getTopBanners} from '@/services/recommend'
+import { 
+  getTopBanner,
+  getHotRecommends
+} from "@/services/recommend";
 
-//再此处  因为已经拿到了数据  现在定义函数 要派发出去
-const changeTopBannerAction=(res)=>({
-    type: actionTypes.CHANGE_TOP_BANNERS,
-    topBanners:res.banners 
+
+
+
+const changeBannerAction = (res) => ({
+  type: actionTypes.CHANGE_TOP_BNNAER,
+  banners: res.banners
 })
 
-//先此处
-export const getTopBannerAction = () => {
-    return dispatch =>{
-        getTopBanners().then(res=>{
-            console.log(res);
-            dispatch(changeTopBannerAction(res))  //派发出去
-        })
-    }
+const changeHotRecommendAction = (res) => ({
+  type: actionTypes.CHANGE_HOT_RECOMMEND,
+  hotRecommends: res.result
+})
+
+
+export const getBanner = () => {
+  return dispatch => {
+    getTopBanner().then(res => {
+      dispatch(changeBannerAction(res));
+    })
+  }
 }
 
-//最后要dispatch这个函数
+
+export const getHotRecommendAction =(limit)=>{
+  return dispatch=>{
+    getHotRecommends(limit).then(res=>{
+     dispatch(changeHotRecommendAction(res))
+    })
+  }
+}
