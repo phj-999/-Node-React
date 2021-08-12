@@ -15,3 +15,24 @@ export function getHotRecommends(limit) {
     }
   })
  }
+
+ // 新碟、专辑
+ export function getNewAlbum(limit, offset) {
+  return request({
+    url: "/top/album",
+    params: {
+      limit,
+      offset
+    }
+  })
+}
+
+//推荐榜单
+export function getTopList(idx) {
+  return request({
+    url: "/top/list",
+    params: {
+      idx
+    }
+  })
+}

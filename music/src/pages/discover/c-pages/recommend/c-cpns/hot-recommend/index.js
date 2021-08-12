@@ -18,6 +18,8 @@ import {
 } from '@/common/contants.js'
 
 import HYThemeHeaderRCM from '@/components/theme-header-rcm'
+import HYSongsCover from '@/components/songs-cover'
+
 import {
     getHotRecommendAction
 } from '../../store/actionCreatiors'
@@ -44,7 +46,7 @@ export default memo(function HYHotRecommend() {
        <div className='recommend-list'>
            {
             state.hotRecommends.map((item,index)=>{
-                return <div key={item.id}>{item.name}</div>
+                return <HYSongsCover key={item.id} info={item}/>
             })
            }
        </div>
