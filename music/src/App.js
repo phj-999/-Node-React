@@ -9,7 +9,7 @@ import store from './store/index'
 
 import HYAppHeader from 'components/app-header'
 import HYAppFooter from 'components/app-footer'
-
+import HYAppPlaybar from './pages/player/app-player-bar'
 
 export default memo(function App() {
     return (
@@ -18,6 +18,7 @@ export default memo(function App() {
             <HYAppHeader/>
             {renderRoutes(routes)}
             <HYAppFooter/>
+            <HYAppPlaybar/>
             </HashRouter>
         </Provider>
     )

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        //<------------------------------------------------->
+      //数组扁平化 除去重复数据 升序  最终得到一个升序并且不重复的数组
+      
+      //<-1.扁平化->
+      let arr = [1, 2, [3,3,2,88,9, 4, 5, [6, 7, [8, 9]]]];
+      //ES6的方法   用flat函数 数组扁平化 将多维数组转换成一维数组
+      const flatArr1 = (arr) => {
+        return arr.flat(Infinity);
+      };
+      console.log(flatArr1(arr));
+
+      //es5的方法
+      let arr1 = [1,2,[3,4,5,[6,7,[8,9]]]]
+      let arrEs5 = arr1.toString().split(',').map(x=>Number(x))
+      //console.log(arrEs5,Array.isArray(arrEs5));
+
+      //<-2.去重->
+       //ES6的方法 
+      let newSetarrEs5 =[... new Set(arrEs5)]
+      console.log("new Set(arrEs5)",newSetarrEs5);
+
+      //es5的方法
+      let newSetarrEs6 = Array.from(new Set(arrEs5))
+      console.log("new Set(arrEs6)",newSetarrEs6);
+
+      //for循环形式
+     function num(arr){ //前后元素对比 重复的就删掉
+          for (let i = 0; i < arr.length; i++) {
+              for (let j=i + 1; j<arr.length; j++) {
+                  if (arr[i] === arr[j]) {
+                      arr.splice(j,1)
+                      j--
+                  }
+                  
+              }
+              
+          }
+          return arr
+      }
+      num(arr)
+      
+      //indexOf的形式
+    num=()=>{
+        let Array=[]
+        for (let i = 0; i < array.length; i++) {
+            if (Array.indexOf(arr[i])===-1) {
+                Array.push(arr[i])
+            }
+        }
+        return Array
+    }  
+    
+   //<-2.升序->
+    arr.sort((a,b)=>a-b)
+    console.log(arr);
+      //<------------------------------------------------------>
+
+//<-------->
+//Array.from() 方法从一个类似数组或可迭代对象创建一个新的，浅拷贝的数组实例。
+// console.log(Array.from('foo')); expected output: Array ["f", "o", "o"]
+//console.log(Array.from([1, 2, 3], x => x + x)); expected output: Array [2, 4, 6]
+
+const arr11 = [1,2,3,3]
+const iterator = arr11.keys();
+for (const arr11Key of iterator) {
+    console.log("迭代遍历下标值index",arr11Key);
+} /*迭代遍历 0
+数组.html:29 迭代遍历 1
+数组.html:29 迭代遍历 2
+数组.html:29 迭代遍历 3*/
+console.log("arr11.values()",arr11.values());  // 返回一个迭代器 但什么都没有  要用来遍历
+console.log("arr11.entries()",arr11.entries());// 返回一个迭代器 但什么都没有  要用来遍历
+console.log("Array.from(arr11)",Array.from(arr11));//0: 1 1: 2 2: 3 3: 3 length: 4
+console.log("Array.from(arr11.values())",Array.from(arr11.values()));//0: 1 1: 2 2: 3 3: 3 length: 4
+console.log("Array.from(arr11.entries())",Array.from(arr11.entries()));/*
+0: (2) [0, 1]
+1: (2) [1, 2]
+2: (2) [2, 3]
+3: (2) [3, 3]
+length: 4*/
+console.log("Array.from(arr.values())",Array.from(arr.values()));/**0: 1
+1: 2
+2: Array(4)
+0: 3
+1: 4
+2: 5
+3: Array(3)
+0: 6
+1: 7
+2: (2) [8, 9]
+length: 3
+[[Prototype]]: Array(0)
+length: 4
+[[Prototype]]: Array(0)
+length: 3*/
+//<-------->
+    </script>
+  </body>
+</html>
