@@ -1,3 +1,7 @@
+/**
+ * 全局抛出异常处理
+ * 
+ */
 module.exports = (option, app) => {
     return async function (ctx, next) {
         try {

@@ -11,7 +11,7 @@ module.exports = {
     enable: true,
     package: 'egg-cors',
   },
-  //
+  // egg-sequelize 插件
   sequelize : {
     enable: true,
     package: 'egg-sequelize',
@@ -36,6 +36,10 @@ jwt : {
     enable: true,
     package: 'egg-redis',
   },
-
+// //创建订单和微信支付
+// tenpay: {
+//   enable: true,
+//   package: 'egg-tenpay'
+// },
   
 };

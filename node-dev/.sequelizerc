@@ -1,5 +1,8 @@
 'use strict';
-
+/**
+ * 将所有数据库 Migrations 相关的内容都放在database目录下
+ * 
+ */
 const path = require('path');
 
 module.exports = {

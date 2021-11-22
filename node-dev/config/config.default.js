@@ -42,7 +42,7 @@ module.exports = appInfo => {
     allowMethods: 'GET, PUT, POST, DELETE, PATCH'
   };
  
-
+//sequelize配置
   config.sequelize = {
     dialect: 'mysql',
     host: '127.0.0.1',
@@ -83,7 +83,7 @@ config.crypto = {
   secret:  'qhdgw@45ncashdaksh2!#@3nxjdas*_672'
 };
 config.session =  {
-  // 在有些场景下，我们希望用户如果长时间都在访问我们的站点，则延长他们的 Session 有效期，不让用户退出登录态
+  // 延长 Session 有效期，不让用户退出登录态
   renew: true,
   // key 代表了存储 Session 的 Cookie 键值对的 key 是什么
   key: 'EGG_SESS',
@@ -115,7 +115,8 @@ config.adminSidebar = {
 config.multipart = {
   fileSize: '50mb',
   mode: 'stream',
-  fileExtensions: ['.jpg', '.JPG', '.png', '.PNG', '.gif', '.GIF', '.jpeg', '.JPEG'], // 扩展几种上传的文件格式
+  // 扩展几种上传的文件格式
+  fileExtensions: ['.jpg', '.JPG', '.png', '.PNG', '.gif', '.GIF', '.jpeg', '.JPEG']
 };
 //API--用户登录jwt 加密鉴权 
 config.jwt = {
@@ -158,6 +159,17 @@ config.mediaServer = {
     publish: true,
     secret: 'nodemedia2017privatekey',//随便写的加秘字符串
   },
+};
+//创建订单和微信支付
+config.webUrl = 'http://127.0.0.1:7001'
+config.tenpay = {
+  client: {
+    appid: 'wxc559eade7d0a3bde', //用户
+    mchid: '1554108981', //商家
+    partnerKey: '8b07811ec793049f1c97793464c7049f',
+    notify_url: config.webUrl + '/api/gift/notify',  //支付成功后通知的页面
+    // sandbox: true
+  }
 };
 
   return {

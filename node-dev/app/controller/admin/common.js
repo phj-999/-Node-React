@@ -4,12 +4,11 @@ const Controller = require('egg').Controller;
 // 引入
 const fs = require('fs');
 const path = require('path');
-//故名思意 异步二进制 写入流
+//异步二进制 写入流
 const awaitWriteStream = require('await-stream-ready').write;
 //管道读入一个虫洞。
 const sendToWormhole = require('stream-wormhole');
 const dayjs = require('dayjs');
-const await = require('await-stream-ready/lib/await');
 
 class CommonController extends Controller {
     // 上传文件
@@ -17,12 +16,9 @@ class CommonController extends Controller {
         const stream = await this.ctx.getFileStream();
         // 基础目录 后期上传文件存放 自动生成uploads
         const uploadBasePath = 'app/public/uploads'
-        // 生成唯一文件名
         //生成唯一文件名 
-        //Data.now()当前时间戳 
         //path.extname(stream.filename)文件后缀  
         //stream.filename是原来的文件名称 
-        //toLocaleLowerCase()生成唯一文件名
         const filename = `${Date.now()}${path.extname(stream.filename).toLocaleLowerCase()}`
         // 生成文件夹
         const dirname = dayjs(Date.now()).format('YYYY/MM/DD')

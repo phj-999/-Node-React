@@ -28,14 +28,10 @@ module.exports = (option, app) => {
         //挂载在local中
         //ctx.locals.sidebar = menus
         //active当前选中状态
-        ctx.locals.sidebar = menus.map(item => {
-            if (
-                (ctx.request.url === '/admin' &&
-                    item.url === '/admin') ||
-                (ctx.request.url.startsWith(item.url) && ctx.request.url != '/admin') &&
-                item.url !== '/admin') {
+        ctx.locals.sidebar = menus.map(item=>{
+            if((ctx.request.url === '/admin' && item.url === '/admin') || (ctx.request.url.startsWith(item.url) && ctx.request.url != '/admin') && item.url !== '/admin'){
                 item.active = 'active'
-            }
+            } 
             return item
         })
         await next();

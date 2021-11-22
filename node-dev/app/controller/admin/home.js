@@ -4,11 +4,11 @@ const Controller = require('egg').Controller;
 const crypto = require('crypto');
 class HomeController extends Controller {
    async index(){
+       // 后台首页
        let {ctx, app} = this
        await ctx.render('admin/home/index.html')
    }
-
-
+   
     // 登录页
     async login() {
         let {

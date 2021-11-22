@@ -44,9 +44,8 @@ class ManagerController extends Controller {
         })
         let { username, password } = ctx.request.body
         //判断用户名有没有
-        if ( //条件
+        if ( 
             await app.model.Manager.findOne({
-
                 where: {
                     username
                 }
@@ -64,14 +63,14 @@ class ManagerController extends Controller {
     async index() {
         //解构
         const { ctx, app } = this
-        //page是分页功能
+        //page分页功能
         //本来没有page的方法  所以要在拓展中定义
         let list = await ctx.page('Manager')
 
         // let list = await ctx.page('Manager',{},{
         //     order:[['id','desc']]
         // }) 第二个参数where查询条件  第三个参数options可以排序
-        //拿到相应的数据 (此处已经创建好了用户，所以要从数据库中拿到数据)
+        //拿到相应的数据
         //传入limit offset参数实现分页
         //let list = await app.model.Manager.findAndCountAll({offset,limit})
         await ctx.renderTemplate({
@@ -199,8 +198,9 @@ async update() {
     }
     
     const Op = app.Sequelize.Op
-
-    if (await app.model.Manager.findOne({ //判断传过来的username是否已经存在
+   
+    //判断传过来的username是否已经存在
+    if (await app.model.Manager.findOne({
         where: {
             id:{
                 [Op.ne]:id,
