@@ -171,7 +171,11 @@ ${pageEl}
     }
     return true;
   },
-  //生成唯一id
+  
+  /**
+   * 随机生成唯一id
+   * @param {number} 随机生成的字符串长度
+   */
   randomString(length) {
     const chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     var result = '';

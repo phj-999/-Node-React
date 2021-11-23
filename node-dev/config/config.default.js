@@ -131,7 +131,7 @@ config.redis = {
       db: 2,
   },
 }
-//权限验证中间件
+//权限验证中间件匹配的路由
 config.auth = {
   match: [
     '/api/logout',
@@ -161,14 +161,15 @@ config.mediaServer = {
   },
 };
 //创建订单和微信支付
-config.webUrl = 'http://127.0.0.1:7001'
+config.webUrl = 'http://127.0.0.1:7001' //spbill_create_ip - IP地址(选填) 
 config.tenpay = {
   client: {
-    appid: 'wxc559eade7d0a3bde', //用户
-    mchid: '1554108981', //商家
-    partnerKey: '8b07811ec793049f1c97793464c7049f',
+    appid: 'wxc559eade7d0a3bde', //appid 公众号ID(必填)
+    mchid: '1554108981', //微信商户号(必填)
+    partnerKey: '8b07811ec793049f1c97793464c7049f',//微信支付安全密钥(必填, 在微信商户管理界面获取)
     notify_url: config.webUrl + '/api/gift/notify',  //支付成功后通知的页面
     // sandbox: true
+    //refund_url - 退款结果通知回调地址(选填) 
   }
 };
 

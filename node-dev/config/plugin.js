@@ -36,10 +36,10 @@ jwt : {
     enable: true,
     package: 'egg-redis',
   },
-// //创建订单和微信支付
-// tenpay: {
-//   enable: true,
-//   package: 'egg-tenpay'
-// },
+//创建订单和微信支付
+tenpay: {
+  enable: true,
+  package: 'egg-tenpay'
+},
   
 };
