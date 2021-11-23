@@ -30,8 +30,7 @@ class LiveController extends Controller {
         key,
     })
     
-    // 生成签名
-     // 生成签名
+     // 生成唯一签名
      let sign = this.sign(key)
 
      ctx.apiSuccess({

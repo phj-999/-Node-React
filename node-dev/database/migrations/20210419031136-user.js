@@ -2,13 +2,7 @@
 
 module.exports = {
     up: (queryInterface, Sequelize) => {
-        const {
-            INTEGER,
-            STRING,
-            DATE,
-            ENUM,
-            TEXT
-        } = Sequelize;
+        const { INTEGER, STRING, DATE, ENUM, TEXT } = Sequelize;
         return queryInterface.createTable('user', {
             id: {
                 type: INTEGER(20),

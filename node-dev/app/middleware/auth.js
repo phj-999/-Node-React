@@ -1,3 +1,7 @@
+/**
+ * 权限验证中间件
+ * 
+ */
 module.exports = (option, app) => {
     return async (ctx, next) => {
         //1. 获取 header 头token

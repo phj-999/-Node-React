@@ -230,7 +230,7 @@ async update() {
     ctx.apiSuccess(await gift.save())
 
 }
-//删除管理员
+//删除礼物
 async delete () {
     const { ctx,app } = this
     const id = ctx.params.id

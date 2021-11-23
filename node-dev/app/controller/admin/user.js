@@ -297,23 +297,6 @@ async delete() {
     ctx.redirect('/admin/user');
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 module.exports = UserController;

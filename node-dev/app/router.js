@@ -51,8 +51,6 @@ module.exports = app => {
   router.post('/admin/gift/:id', controller.admin.gift.update);
   //删除礼物
   router.get('/admin/gift/delete/:id', controller.admin.gift.delete);
-  //上传文件
-  router.post('/admin/upload', controller.admin.common.upload);
   //订单列表
   router.get('/admin/order', controller.admin.order.index);
   //删除订单
@@ -75,6 +73,8 @@ module.exports = app => {
   router.post('/api/login', controller.api.user.login);
   //api-退出登录
   router.post('/api/logout', controller.api.user.logout);
+  //上传文件
+  router.post('/api/upload', controller.api.common.upload);
   //获取当前用户信息
   router.get('/api/user/info', controller.api.user.info);
   //创建直播间

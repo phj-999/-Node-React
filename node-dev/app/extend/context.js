@@ -182,8 +182,15 @@ ${pageEl}
     for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
     return result;
   },
-
-
+  /**
+   * 判断移动端还是pc端
+   * 
+   */
+  ismobile(ctx){
+    let userAgent = this.request.header['user-agent'].toLowerCase();
+    let pat_phone = /ipad|iphone os|midp|rv:1.2.3.4|ucweb|android|windows ce|windows mobile/;
+    return pat_phone.test(userAgent);
+}
 
 
 
