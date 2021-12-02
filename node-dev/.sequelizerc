@@ -1,0 +1,13 @@
+'use strict';
+/**
+ * 将所有数据库 Migrations 相关的内容都放在database目录下
+ * 
+ */
+const path = require('path');
+
+module.exports = {
+  config: path.join(__dirname, 'database/config.json'),
+  'migrations-path': path.join(__dirname, 'database/migrations'),
+  'seeders-path': path.join(__dirname, 'database/seeders'),
+  'models-path': path.join(__dirname, 'app/model'),
+};

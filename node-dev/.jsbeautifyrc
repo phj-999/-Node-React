@@ -1,0 +1,39 @@
+{
+    "editor.detectIndentation": false,
+    "update.mode": "none",
+    "search.followSymlinks": false,
+
+    "[javascript]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "beautify.config": "",
+    "beautify.language": {
+        "html": [
+            "htm",
+            "html",
+            "vue"
+        ],
+        "js": {
+            "type": [
+                "javascript",
+                "json"
+            ],
+            "filename": [
+                ".jshintrc",
+                ".jsbeautify"
+            ]
+        },
+        "css": [
+            "css",
+            "scss",
+            "less"
+        ]
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    }
+}

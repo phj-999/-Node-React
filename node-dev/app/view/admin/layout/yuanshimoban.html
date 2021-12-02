@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+		<title>直播后台 - 创建管理员</title>
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" type="image/x-icon" href="/public/assets/img/favicon.png">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="/public/assets/css/font-awesome.min.css">
+
+		<!-- Feathericon CSS -->
+		<link rel="stylesheet" href="/public/assets/css/feathericon.min.css">
+
+		<!-- Main CSS -->
+		<link rel="stylesheet" href="/public/assets/css/style.css">
+
+		<!--[if lt IE 9]>
+			<script src="/public/assets/js/html5shiv.min.js"></script>
+			<script src="/public/assets/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+
+		<!-- Main Wrapper -->
+		<div class="main-wrapper">
+
+			<!-- Header -->
+			<div class="header">
+
+				<!-- Logo -->
+				<div class="header-left">
+					<a href="index.html" class="logo">
+						<img src="/public/assets/img/logo.png" alt="Logo">
+					</a>
+					<a href="index.html" class="logo logo-small">
+						<img src="/public/assets/img/logo-small.png" alt="Logo" width="30" height="30">
+					</a>
+				</div>
+				<!-- /Logo -->
+
+				<a href="javascript:void(0);" id="toggle_btn">
+					<i class="fe fe-text-align-left"></i>
+				</a>
+
+				<div class="top-nav-search">
+					<form>
+						<input type="text" class="form-control" placeholder="Search here">
+						<button class="btn" type="submit"><i class="fa fa-search"></i></button>
+					</form>
+				</div>
+
+				<!-- Mobile Menu Toggle -->
+				<a class="mobile_btn" id="mobile_btn">
+					<i class="fa fa-bars"></i>
+				</a>
+				<!-- /Mobile Menu Toggle -->
+
+				<!-- Header Right Menu -->
+				<ul class="nav user-menu">
+					<!-- User Menu -->
+					<li class="nav-item dropdown has-arrow">
+						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+							<span class="user-img"><img class="rounded-circle" src="/public/assets/img/profiles/avatar-01.jpg" width="31" alt="Ryan Taylor"></span>
+						</a>
+						<div class="dropdown-menu">
+							<div class="user-header">
+								<div class="avatar avatar-sm">
+									<img src="/public/assets/img/profiles/avatar-01.jpg" alt="User Image" class="avatar-img rounded-circle">
+								</div>
+								<div class="user-text">
+									<h6>admin</h6>
+									<p class="text-muted mb-0">超级管理员</p>
+								</div>
+							</div>
+							<a class="dropdown-item" href="profile.html">修改资料</a>
+							<a class="dropdown-item" href="login.html">退出登录</a>
+						</div>
+					</li>
+					<!-- /User Menu -->
+
+				</ul>
+				<!-- /Header Right Menu -->
+
+			</div>
+			<!-- /Header -->
+
+			<!-- Sidebar -->
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-inner slimscroll">
+					<div id="sidebar-menu" class="sidebar-menu">
+						<ul>
+							<li>
+								<a href="index.html"><i class="fe fe-home"></i> <span>主面板</span></a>
+							</li>
+							<li>
+								<a href="user.html"><i class="fe fe-user-plus"></i> <span>用户管理</span></a>
+							</li>
+
+							<li>
+								<a href="/"><i class="fe fe-document"></i> <span>直播间管理</span></a>
+							</li>
+							<li>
+								<a href="/"><i class="fe fe-vector"></i> <span>礼物管理</span></a>
+							</li>
+							<li>
+								<a href="/"><i class="fe fe-cart"></i> <span>订单管理</span></a>
+							</li>
+							<li>
+								<a href="/"><i class="fe fe-table"></i> <span>管理员管理</span></a>
+							</li>
+
+
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- /Sidebar -->
+
+			<!-- Page Wrapper -->
+			<div class="page-wrapper">
+				<div class="content container-fluid">
+
+					<div class="page-header">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">创建管理员</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">后台首页</a></li>
+									<li class="breadcrumb-item active">创建管理员</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-12">
+
+							<div class="card">
+								<div class="card-body">
+									<form action="#">
+										<div class="form-group row">
+											<label class="col-form-label col-md-2">用户名</label>
+											<div class="col-md-10">
+												<input type="text" class="form-control" placeholder="用户名...">
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-form-label col-md-2">密码</label>
+											<div class="col-md-10">
+												<input type="password" class="form-control"  placeholder="密码...">
+											</div>
+										</div>
+										
+										<div class="form-group row">
+											<label class="col-form-label col-md-2">头像</label>
+											<div class="col-md-10">
+												<input class="form-control" type="file">
+											</div>
+										</div>
+
+										<div class="form-group mb-0 row">
+											<label class="col-form-label col-md-2">金币</label>
+											<div class="col-md-10">
+												<div class="input-group">
+													<div class="input-group-prepend">
+														<span class="input-group-text">￥</span>
+													</div>
+													<input class="form-control" type="text">
+												</div>
+											</div>
+										</div>
+										
+										<div class="text-right mt-3">											<button type="submit" class="btn btn-primary">提 交</button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Page Wrapper -->
+
+		</div>
+		<!-- /Main Wrapper -->
+
+		<!-- jQuery -->
+		<script src="/public/assets/js/jquery-3.2.1.min.js"></script>
+
+		<!-- Bootstrap Core JS -->
+		<script src="/public/assets/js/popper.min.js"></script>
+		<script src="http://cdn.bootstrapmb.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+		<!-- Slimscroll JS -->
+		<script src="/public/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+		<!-- Custom JS -->
+		<script src="/public/assets/js/script.js"></script>
+	</body>
+</html>
