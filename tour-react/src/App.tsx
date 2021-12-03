@@ -1,9 +1,14 @@
 import React from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Typography } from "antd";
 
-import { Header, Footer, Carousel, SideMenu } from "./components";
+import { Header, Footer, Carousel, SideMenu, ProductCollection, BusinessPartners } from "./components";
 import styles from "./App.module.css";
 import { productList1, productList2, productList3 } from "./mockups";
+
+
+import sideImage from './assets/images/sider_2019_12-09.png';
+import sideImage2 from './assets/images/sider_2019_02-04.png';
+import sideImage3 from './assets/images/sider_2019_02-04-2.png';
 
 function App() {
   return (
@@ -48,6 +53,7 @@ function App() {
           sideImage={sideImage3}
           products={productList3}
         />
+        <BusinessPartners />
       </div>
       <Footer />
     </div>
