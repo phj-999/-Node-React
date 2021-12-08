@@ -52,13 +52,13 @@ module.exports = (app) => {
       comment: "头像",
     },
 
-    created_time: {
+    createTime: {
       type: DATE,
       get() {
-        return app.formatTime(this.getDataValue("created_time"));
+        return app.formatTime(this.getDataValue("createTime"));
       },
     },
-    updated_time: DATE,
+    updateTime: DATE,
   });
   return User;
 };

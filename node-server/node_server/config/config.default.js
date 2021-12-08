@@ -14,6 +14,7 @@ module.exports = (appInfo) => {
 
   const userConfig = {
     // myAppName: 'egg',
+    redisExpire: 60 * 60 * 24
   };
   config.security = {
     // csrf
@@ -27,8 +28,17 @@ module.exports = (appInfo) => {
     // domainWhiteList: ['http://localhost:3000'],
   };
   // add your config here
+  // 允许跨域的方法
+  config.cors = {
+    origin: '*',
+    allowMethods: 'GET, PUT, POST, DELETE, PATCH'
+  };
+
   config.middleware = ["errorHandle",'auth'];
 
+  config.errorHandle= {
+    match: '/api',
+  };
   //password加密
   config.crypto = {
     secret: "mimajiami123%*&^321secret",
@@ -52,7 +62,8 @@ module.exports = (appInfo) => {
   config.auth={
     match:[
       '/api/logout',
-      '/api/user/info'
+      '/api/user/info',
+      '/api/user/edit'
     ]
   }
 
@@ -72,8 +83,8 @@ module.exports = (appInfo) => {
       timestamps: true,
       // 字段生成软删除时间戳 deleted_at
       // paranoid: true,
-      createdAt: "created_time",
-      updatedAt: "updated_time",
+      createdAt: "createTime",
+      updatedAt: "updateTime",
       // deletedAt: 'deleted_time',
       // 所有驼峰命名格式化
       underscored: true,

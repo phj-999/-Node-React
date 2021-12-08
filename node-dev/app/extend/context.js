@@ -159,19 +159,6 @@ ${pageEl}
     }
     return true;
   },
-  // 验证密码
-  async checkPassword(password, hash_password) {
-    // 先对需要验证的密码进行加密
-    const hmac = crypto.createHash("sha256", this.app.config.crypto.secret);
-    hmac.update(password);
-    password = hmac.digest("hex");
-    let res = password === hash_password;
-    if (!res) {
-      this.ctx.throw(400, '密码错误');
-    }
-    return true;
-  },
-  
   /**
    * 随机生成唯一id
    * @param {number} 随机生成的字符串长度
