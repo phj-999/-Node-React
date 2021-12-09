@@ -48,7 +48,10 @@ module.exports = {
   async checkPassword(password,hash_password){
     const hmac = crypto.createHash("sha256", this.app.config.crypto.secret);
     hmac.update(password);
+    password = hmac.digest("hex");
     password === hash_password;
+    // console.log(password);
+    // console.log(hash_password);
     if (!(password === hash_password)) {this.throw(400, '密码错误')};
     return true;
   }

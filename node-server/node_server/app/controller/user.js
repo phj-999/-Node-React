@@ -64,10 +64,13 @@ class UserController extends Controller {
       //生成token
       result.token = await ctx.getToken({
         id: result.id,
-        username: result.username,
+        //username: result.username,
       });
-      let token = result.token;
-      ctx.success({ result, token });
+      //let token = result.token;
+      ctx.success({
+         result,
+         //token 
+        });
     } else {
       ctx.throw(400, "创建用户失败");
     }
@@ -87,23 +90,63 @@ class UserController extends Controller {
     //user = JSON.parse(JSON.stringify(user))
     user.token = await ctx.getToken({
       id: user.id,
-      username: user.username,
     });
     let token = user.token;
-
+    const userMsg = {token:token,username:username}
     //加入redis
     if (
       !(await this.service.redisCache.set(
         "user_" + user.id,
-        token,
+        {userMsg},
         app.config.redisExpire
       ))
     )
       ctx.throw(400, "登录失败");
-    ctx.success({ user, token });
+    ctx.success({ user, token }, "登陆成功");
   }
 
-  
+  async edit() {
+    const { ctx, app } = this;
+    const user = ctx.authUser;
+    let t = await ctx.service.redisCache.get("user_" + user.id);
+    //ctx.success({user,token:t})
+    // const user = await ctx.service.user.getUser(parmas.username);
+    // const userId = await app.model.User.findByPk(user.id);
+    //传来的修改数据
+    const parmas = ctx.params();
+    const {username} = parmas
+    const Op = app.Sequelize.Op
+    
+
+    try {
+      const nusername = await ctx.model.User.findOne({
+        where:{
+          id:{
+            [Op.ne]:user.id
+          },
+          username
+        }
+      })
+
+     if (nusername) {
+       ctx.fail('该用户名已存在')
+       return
+     }
+ 
+     if (t.userMsg.username) {
+       return true
+     }
+
+      await ctx.service.user.edit({
+        ...parmas,
+      });
+      const result = await ctx.model.User.findOne({ where: ctx.authUser.id });
+      //console.log(result, "rererererererer");
+      ctx.success({  result, token: t.userMsg.token });
+    } catch (error) {
+      ctx.throw(error);
+    }
+  }
 }
 
 module.exports = UserController;

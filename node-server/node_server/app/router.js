@@ -11,4 +11,6 @@ module.exports = (app) => {
   router.post("/api/user/register", controller.user.register);
   //用户登录
   router.post("/api/user/login", controller.user.login);
+  //用户修改
+  router.post('/api/user/edit',controller.user.edit)
 };

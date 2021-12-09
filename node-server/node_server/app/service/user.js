@@ -29,13 +29,15 @@ class UserService extends Service {
 
     //修改
     async edit(params) {
+        const {ctx} = this
+        
         try {
-            const result = await ctx.model.User.update(params, {
+            await ctx.model.User.update(params, {
                 where: {
-                    username: ctx.username
+                    id: ctx.authUser.id
                 }
             });
-            return result;
+            return
         } catch (error) {
             console.log(error);
             return null
