@@ -109,14 +109,10 @@ class UserController extends Controller {
     const { ctx, app } = this;
     const user = ctx.authUser;
     let t = await ctx.service.redisCache.get("user_" + user.id);
-    //ctx.success({user,token:t})
-    // const user = await ctx.service.user.getUser(parmas.username);
-    // const userId = await app.model.User.findByPk(user.id);
     //传来的修改数据
     const parmas = ctx.params();
     const {username} = parmas
     const Op = app.Sequelize.Op
-    
 
     try {
       const nusername = await ctx.model.User.findOne({
@@ -145,6 +141,19 @@ class UserController extends Controller {
       ctx.success({  result, token: t.userMsg.token });
     } catch (error) {
       ctx.throw(error);
+    }
+  }
+
+  //退出
+  async logout (){
+    const {ctx,app} =this
+    const user = ctx.authUser;
+    //let t = await ctx.service.redisCache.get("user_" + user.id);
+    try {
+      await ctx.service.user.remove("user_" + user.id)
+      ctx.success('退出登录')
+    } catch (error) {
+      ctx.throw(400,'退出登录失败')
     }
   }
 }

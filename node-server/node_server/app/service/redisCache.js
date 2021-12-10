@@ -33,6 +33,15 @@ class RedisCacheService extends Service {
         const result = await redis.get(key)
         return JSON.parse(result)
     }
+
+    /**
+     * 删除指定的key
+     * @params {string} key
+     */
+    async remove(key) {
+        const redis = this.app
+        return await redis.del(key)
+    }
 }
 
 module.exports = RedisCacheService
