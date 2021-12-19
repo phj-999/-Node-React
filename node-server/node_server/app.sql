@@ -29,3 +29,11 @@ create table `house` {
   primary key(`id`)
 }engine=InnoDB auto_increment=1 default charset=utf8 comment='房屋表';
 
+-- 图片表
+create table `imgs`(
+  `id` int not null auto_increment,
+  `url` varchar(500) default null comment '图片地址',
+  `houseId` int not null comment '房屋id',
+  `createTime` timestamp default null comment '创建时间',
+  primary key(`id`)
+) engine=InnoDB auto_increment=1 default charset=utf8 comment='图片表';

@@ -17,4 +17,12 @@ module.exports = (app) => {
   router.get('/api/user/detail', controller.user.detail);
   //退出登录
   router.post('/api/user/logout', controller.user.logout)
+  //热门
+  router.post('/api/house/hot', controller.house.hot);
+  //搜索
+  router.post('/api/house/search', controller.house.search);
+  //详情
+  router.post('/api/house/detail', controller.house.detail);
+  //城市列表
+  router.post('/api/city/citys', controller.city.citys);
 };
