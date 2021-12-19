@@ -143,7 +143,12 @@ class UserController extends Controller {
       ctx.throw(error);
     }
   }
-
+  //获取当前用户信息
+  async detail(){
+    const { ctx } = this;
+    let user = ctx.authUser
+    return ctx.apiSuccess(JSON.parse(JSON.stringify(user)))
+  }
   //退出
   async logout (){
     const {ctx,app} =this
@@ -156,6 +161,7 @@ class UserController extends Controller {
       ctx.throw(400,'退出登录失败')
     }
   }
+
 }
 
 module.exports = UserController;

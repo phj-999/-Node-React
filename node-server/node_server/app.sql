@@ -13,3 +13,19 @@ create table `user` (
   `updateTime` timestamp default null comment '更新时间',
   primary key(`id`)
 )engine=InnoDB auto_increment=1 default charset=utf8 comment='用户表';
+
+--民宿表
+create table `house` {
+  `id` int not null auto_increment,
+  `name` varchar(50) default null   comment '房屋名称',
+  `info` varchar(150) default null  comment '房屋简介',
+  `addres` varchar(200) default null comment '房屋地址',
+  `price` int default null comment '房屋价格',
+  `publishTime` timestamp default null comment '发布时间',
+  `cityCode` varchar(10) not null comment '城市编码',
+  `showCount` int(5) not null default 0 comment '展示次数',
+  `startTime` timestamp default null comment '开始出租时间',
+  `endTime` timestamp default null comment '出租结束时间',
+  primary key(`id`)
+}engine=InnoDB auto_increment=1 default charset=utf8 comment='房屋表';
+
