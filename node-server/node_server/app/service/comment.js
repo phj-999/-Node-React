@@ -30,3 +30,5 @@ class CommentService extends BaseService {
           });
     }
  }
+
+ module.exports = CommentService;
