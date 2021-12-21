@@ -25,4 +25,7 @@ module.exports = (app) => {
   router.post('/api/house/detail', controller.house.detail);
   //城市列表
   router.post('/api/city/citys', controller.city.citys);
+  //评论
+  router.post('/api/comment/add', controller.comment.add);
+  router.post('/api/comment/lists', controller.comment.lists);
 };

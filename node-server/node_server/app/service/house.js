@@ -26,7 +26,7 @@ class HouseService extends Service {
       return result;
     };
   }
-
+ /**搜索民宿 */
   async search() {
     return this.run(async (ctx, app) => {
       const { lte, gte, like } = app.Sequelize.Op;
@@ -55,7 +55,7 @@ class HouseService extends Service {
       return result;
     });
   }
-
+ /**民宿详情 */
   async detail(id) {
     return this.run(async (ctx, app) => {
       const result = await ctx.model.House.findOne({
@@ -71,10 +71,10 @@ class HouseService extends Service {
       });
 
       await ctx.model.House.update(
-        {
+        {//修改字段
           showCount: result.showCount + 1,
         },
-        {
+        {//条件
           where: {
             id,
           },

@@ -13,8 +13,8 @@ module.exports = (app) => {
     price: INTEGER,
     publishTime: {
       type: DATE,
-      get() {
-        return new Date(this.getDataValue("publishTime")).getTime();
+      get() { //转换成时间戳
+        return  new Date(this.getDataValue("publishTime")).getTime();
       },
     },
     cityCode: STRING,

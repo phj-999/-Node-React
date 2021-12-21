@@ -19,7 +19,7 @@ class HouseController extends Controller {
 
     ctx.success({
       info: result,
-      banner: result.imgs,
+      banner: result.imgs, // 图片
     });
   }
 }
