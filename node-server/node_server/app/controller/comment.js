@@ -1,7 +1,6 @@
 const Controller = require('egg').Controller;
-const BaseController = require('./base');
 
-class CommentController extends BaseController {
+class CommentController extends Controller {
   async add() {
     const { ctx, app } = this;
     const user = await ctx.service.user.getUser(ctx.username);
@@ -12,7 +11,7 @@ class CommentController extends BaseController {
       createTime: ctx.helper.time()
     });
 
-    this.success(result);
+    ctx.success(result);
   }
 
   async lists(){
@@ -20,7 +19,7 @@ class CommentController extends BaseController {
     const user = await ctx.service.user.getUser(ctx.username);
     const result = await ctx.service.comment.lists(ctx.params(), user.id);
 
-    this.success(result);
+    ctx.success(result);
   }
 }
 

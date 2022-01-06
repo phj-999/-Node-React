@@ -21,3 +21,4 @@ class CityController extends Controller {
     }
   }
 }
+module.exports =  CityController

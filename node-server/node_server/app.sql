@@ -15,7 +15,7 @@ create table `user` (
 )engine=InnoDB auto_increment=1 default charset=utf8 comment='用户表';
 
 --民宿表
-create table `house` {
+create table `house` (
   `id` int not null auto_increment,
   `name` varchar(50) default null   comment '房屋名称',
   `info` varchar(150) default null  comment '房屋简介',
@@ -27,7 +27,7 @@ create table `house` {
   `startTime` timestamp default null comment '开始出租时间',
   `endTime` timestamp default null comment '出租结束时间',
   primary key(`id`)
-}engine=InnoDB auto_increment=1 default charset=utf8 comment='房屋表';
+)engine=InnoDB auto_increment=1 default charset=utf8 comment='房屋表';
 
 -- 图片表
 create table `imgs`(
