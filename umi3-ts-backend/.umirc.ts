@@ -26,6 +26,20 @@ export default defineConfig({
           path: '/course',
           component: '@/pages/course/index',
           title: '课程',
+          routes: [
+            { path: '/course', redirect: '/course/list' },
+            { path: '/course/list', component: './Course', title: '课程列表' },
+            {
+              path: '/course/add',
+              component: './Course/addCourse',
+              title: '添加课程',
+            },
+            {
+              path: '/course/edit/:id',
+              component: './Course/addCourse',
+              title: '编辑课程',
+            },
+          ],
         },
       ],
     },
